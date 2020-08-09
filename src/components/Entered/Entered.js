@@ -1,8 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import { getUsername } from "../../redux/authorization/authorization-selectors";
-import authOperations from "../../redux/authorization/authorization-operations";
-import "./Entered.css";
+import React from 'react';
+import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getUsername } from '../../redux/authorization/authorization-selectors';
+import authOperations from '../../redux/authorization/authorization-operations';
+import './Entered.css';
 
 const Entered = ({ name, onLogout }) => (
   <div className="LogoutContainer">
@@ -14,7 +15,12 @@ const Entered = ({ name, onLogout }) => (
     </button>
   </div>
 );
-const mapStateToProps = (state) => ({
+Entered.propTypes = {
+  name: propTypes.string.isRequired,
+  onLogout: propTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
   name: getUsername(state),
 });
 

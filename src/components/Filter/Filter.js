@@ -1,10 +1,10 @@
-import React from "react";
-import propTypes from "prop-types";
-import { connect } from "react-redux";
-import { changeFilter } from "../../redux/contacts/contacts-actions";
-import { getFilter } from "../../redux/contacts/contacts-selectors";
+import React from 'react';
+import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { changeFilter } from '../../redux/contacts/contacts-actions';
+import { getFilter } from '../../redux/contacts/contacts-selectors';
 
-import "./Filter.css";
+import './Filter.css';
 
 const Filter = ({ value, handleFilter }) => (
   <div className="formFilter">
@@ -27,12 +27,12 @@ Filter.propTypes = {
   handleFilter: propTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   value: getFilter(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  handleFilter: (event) => dispatch(changeFilter(event.target.value)),
+const mapDispatchToProps = dispatch => ({
+  handleFilter: event => dispatch(changeFilter(event.target.value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

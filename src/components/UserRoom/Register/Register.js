@@ -1,24 +1,28 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import authOperations from "../../../redux/authorization/authorization-operations";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
+import authOperations from '../../../redux/authorization/authorization-operations';
 
 class Register extends Component {
+  static propTypes = {
+    onRegister: propTypes.func.isRequired,
+  };
   state = {
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
   };
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     this.props.onRegister(this.state);
 
-    this.setState({ name: "", email: "", password: "" });
+    this.setState({ name: '', email: '', password: '' });
   };
 
   render() {

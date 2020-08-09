@@ -1,20 +1,24 @@
-import React, { Component, lazy, Suspense } from "react";
-import { Route, Switch } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { Component, lazy, Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
-import AppBar from "./AppBar";
-import Loader from "./Loader/Loader";
-import routes from "../services/routes";
-import authOperations from "../redux/authorization/authorization-operations";
-import PrivateRoute from "../services/PrivateRoute";
-import PublicRoute from "../services/PublicRoute";
+import AppBar from './AppBar';
+import Loader from './Loader/Loader';
+import routes from '../services/routes';
+import authOperations from '../redux/authorization/authorization-operations';
+import PrivateRoute from '../services/PrivateRoute';
+import PublicRoute from '../services/PublicRoute';
 
-const HomePage = lazy(() => import("../pages/HomePage.js"));
-const PhonebookPage = lazy(() => import("../pages/PhonebookPage.js"));
-const AccountPage = lazy(() => import("../pages/AccountPage.js"));
-const NotFoundPage = lazy(() => import("../pages/NotFoundPage.js"));
+const HomePage = lazy(() => import('../pages/HomePage.js'));
+const PhonebookPage = lazy(() => import('../pages/PhonebookPage.js'));
+const AccountPage = lazy(() => import('../pages/AccountPage.js'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage.js'));
 
 class App extends Component {
+  static propTypes = {
+    onGetCurretnUser: propTypes.func.isRequired,
+  };
   componentDidMount() {
     this.props.onGetCurretnUser();
   }

@@ -1,12 +1,13 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
-import Entered from "../Entered";
-import UserRoom from "../UserRoom";
+import React from 'react';
+import propTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Entered from '../Entered';
+import UserRoom from '../UserRoom';
 
-import routes from "../../services/routes";
-import { getIsAutorization } from "../../redux/authorization/authorization-selectors";
-import "./navigation.css";
+import routes from '../../services/routes';
+import { getIsAutorization } from '../../redux/authorization/authorization-selectors';
+import './navigation.css';
 
 const Navigation = ({ isAutorization }) => {
   return (
@@ -37,7 +38,11 @@ const Navigation = ({ isAutorization }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+Navigation.propTypes = {
+  isAutorization: propTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => ({
   isAutorization: getIsAutorization(state),
 });
 

@@ -1,11 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import propTypes from "prop-types";
-import ContactListItem from "./ContactListItem";
-import contactsOperations from "../../redux/contacts/contacts-operations";
-import { getVisibleContacts } from "../../redux/contacts/contacts-selectors";
+import React from 'react';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
+import ContactListItem from './ContactListItem';
+import contactsOperations from '../../redux/contacts/contacts-operations';
+import { getVisibleContacts } from '../../redux/contacts/contacts-selectors';
 
-import "./Contact.css";
+import './Contact.css';
 
 const ContactList = ({ contacts, onRemoveContact }) => (
   <ul className="contextListContacts">
@@ -33,19 +33,19 @@ ContactList.propTypes = {
         id: propTypes.string.isRequired,
         name: propTypes.string.isRequired,
         number: propTypes.number.isRequired,
-      })
+      }),
     ),
     propTypes.array,
   ]),
   onRemoveContact: propTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   contacts: getVisibleContacts(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onRemoveContact: (id) => dispatch(contactsOperations.removeContact(id)),
+const mapDispatchToProps = dispatch => ({
+  onRemoveContact: id => dispatch(contactsOperations.removeContact(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

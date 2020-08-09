@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import propTypes from "prop-types";
-import { connect } from "react-redux";
-import contactsOperations from "../../redux/contacts/contacts-operations";
-import { getAllContact } from "../../redux/contacts/contacts-selectors";
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import contactsOperations from '../../redux/contacts/contacts-operations';
+import { getAllContact } from '../../redux/contacts/contacts-selectors';
 
-import Modal from "../Modal";
+import Modal from '../Modal';
 
-import "./ContactsForm.css";
+import './ContactsForm.css';
 
 class ContactsForm extends Component {
   static propTypes = {
@@ -15,9 +15,9 @@ class ContactsForm extends Component {
   };
 
   state = {
-    name: "",
-    number: "",
-    message: "",
+    name: '',
+    number: '',
+    message: '',
     showModal: false,
   };
 
@@ -27,11 +27,11 @@ class ContactsForm extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
     const { contacts } = this.props;
-    const checkedName = contacts.find((contact) => name === contact.name);
+    const checkedName = contacts.find(contact => name === contact.name);
     const { onContact } = this.props;
 
     if (!name || !number || (!name && !number)) {
@@ -49,7 +49,7 @@ class ContactsForm extends Component {
   };
 
   resetForm() {
-    this.setState({ name: "", number: "" });
+    this.setState({ name: '', number: '' });
   }
 
   closeModal = () => {
@@ -97,14 +97,14 @@ class ContactsForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     contacts: getAllContact(state),
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onContact: (contact) => dispatch(contactsOperations.saveContact(contact)),
+const mapDispatchToProps = dispatch => ({
+  onContact: contact => dispatch(contactsOperations.saveContact(contact)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsForm);

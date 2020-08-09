@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import propTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
-import ContactsForm from "../components/ContactsForm";
-import ContactList from "../components/ContactList";
-import Filter from "../components/Filter";
+import ContactsForm from '../components/ContactsForm';
+import ContactList from '../components/ContactList';
+import Filter from '../components/Filter';
 
-import contactsOperations from "../redux/contacts/contacts-operations";
-import { getLoading } from "../redux/contacts/contacts-selectors";
+import contactsOperations from '../redux/contacts/contacts-operations';
+import { getLoading } from '../redux/contacts/contacts-selectors';
 
-import Loader from "../components/Loader";
+import Loader from '../components/Loader';
 
 class PhonebookPage extends Component {
   componentDidMount() {
@@ -38,11 +38,11 @@ PhonebookPage.propTypes = {
   isLoading: propTypes.bool,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isLoading: getLoading(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   listContacts: () => dispatch(contactsOperations.listContacts()),
 });
 

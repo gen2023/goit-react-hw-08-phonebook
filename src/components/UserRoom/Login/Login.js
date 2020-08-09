@@ -1,23 +1,27 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import authOperations from "../../../redux/authorization/authorization-operations";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
+import authOperations from '../../../redux/authorization/authorization-operations';
 
 class Login extends Component {
+  static propTypes = {
+    onLogin: propTypes.func.isRequired,
+  };
   state = {
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   };
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     this.props.onLogin(this.state);
 
-    this.setState({ name: "", email: "", password: "" });
+    this.setState({ name: '', email: '', password: '' });
   };
 
   render() {
