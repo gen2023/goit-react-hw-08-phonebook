@@ -1,0 +1,32 @@
+.contentAvtorization {
+  width: 300px;
+  text-align: center;
+}
+
+.contentPhonebook {
+  width: 450px;
+  text-align: center;
+}
+
+.contentHome {
+  width: 500px;
+}
+
+.content {
+  margin-left: 100px;
+  margin-top: 25px;
+}
+
+.formPhonebook {
+  margin: auto;
+  width: 260px;
+}
+
+
+.contentAccount {
+  height: 275px;
+  text-align: center;
+}
+
+/* .rightContent {
+} */

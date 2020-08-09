@@ -1,0 +1,20 @@
+.leftContent,
+.rightContent {
+  float: left;
+  border: 2px solid grey;
+  padding: 20px;
+  height: 335px;
+  width: max-content;
+  position: relative;
+}
+
+.submitLogin {
+  max-width: 150px;
+  position: absolute;
+  bottom: 5px;
+}
+.submitRegister {
+  max-width: 200px;
+  position: absolute;
+  bottom: 5px;
+}
