@@ -1,6 +1,6 @@
 {
   "name": "goit-react-hw-08-phonebook",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "homepage": "https://gen2023.github.io/",
   "author": "Romanko Evgen <gen2023@yandex.ru>",
   "private": true,
@@ -50,7 +50,9 @@
     "react-loader-spinner": "^3.1.14",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
+    "react-toast-notifications": "^2.4.0",
     "redux-logger": "^3.0.6",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "yup": "^0.29.3"
   }
 }

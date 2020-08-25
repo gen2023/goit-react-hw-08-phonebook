@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+
 import authOperations from '../../../redux/authorization/authorization-operations';
 
 class Register extends Component {
@@ -11,22 +12,58 @@ class Register extends Component {
     name: '',
     email: '',
     password: '',
+    errorName: '',
+    errorEmail: '',
+    errorPassword: '',
   };
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = event => {
+    const { errorName, errorPassword, errorEmail } = this.state;
+
+    event.preventDefault();
+
+    this.emptyField();
 
     this.props.onRegister(this.state);
-
-    this.setState({ name: '', email: '', password: '' });
+    if (!errorName && !errorPassword && !errorEmail) {
+      this.setState({ name: '', email: '', password: '' });
+    }
   };
 
+  emptyField() {
+    let { name, email, password } = this.state;
+
+    if (!name) {
+      this.setState({ errorName: 'ERROR Name' });
+    } else {
+      this.setState({ errorName: '' });
+    }
+    if (!email) {
+      this.setState({ errorEmail: 'ERROR Email' });
+    } else {
+      this.setState({ errorEmail: '' });
+    }
+    if (!password) {
+      this.setState({ errorPassword: 'ERROR Password' });
+    } else {
+      this.setState({ errorPassword: '' });
+    }
+    return this.state;
+  }
+
   render() {
-    const { name, email, password } = this.state;
+    const {
+      name,
+      email,
+      password,
+      errorName,
+      errorEmail,
+      errorPassword,
+    } = this.state;
 
     return (
       <>
@@ -42,6 +79,7 @@ class Register extends Component {
               onChange={this.handleChange}
             />
           </div>
+          {errorName && <div className="textError">{errorName}</div>}
           <div className="form-group">
             <label>Почта</label>
             <input
@@ -51,6 +89,7 @@ class Register extends Component {
               onChange={this.handleChange}
             />
           </div>
+          {errorEmail && <div className="textError">{errorEmail}</div>}
           <div className="form-group">
             <label>Пароль </label>
             <input
@@ -60,7 +99,7 @@ class Register extends Component {
               onChange={this.handleChange}
             />
           </div>
-
+          {errorPassword && <div className="textError">{errorPassword}</div>}
           <button className="submit submitRegister" type="submit">
             Зарегистрироваться
           </button>
